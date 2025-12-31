@@ -49,7 +49,9 @@ class Product(ABC):
     def price(self, value: float) -> None:
         """Setter for price, ensures the price is not negative."""
         # Write here your code
-        pass
+        if value < 0:
+            raise ValueError("Price cannot be negative.")
+        self._price = value
 
 
 class Book(Product):
@@ -87,13 +89,11 @@ class Order:
 
     def add_product(self, product: Product) -> None:
         """Adds a product to the order."""
-        # Write here your code
-        pass
+        self.products.append(product)
     
     def calculate_total(self) -> float:
         """Calculates the total price of all products in the order."""
-        # Write here your code
-        pass
+        return sum(product.price for product in self.products)
 
 # Para probar el código, descomenta las siguientes líneas
 # if __name__ == "__main__":
