@@ -32,15 +32,21 @@ from typing import List
 
 
 def generate_passwords(password_length: int) -> List[str]:
-    uppercase_letters = 
-    lowercase_letters = 
-    digits = 
-    special_symbols = 
+    uppercase_letters = "AZ"
+    lowercase_letters = "xy"
+    digits = "09"
+    special_symbols = "@#"
     characters = uppercase_letters + lowercase_letters + digits + special_symbols
-    possible_passwords = itertools.product(characters, repeat=)
-    password_list_joined = [ for password in possible_passwords]
-    return 
+    possible_passwords = itertools.product(characters, repeat=password_length)
+    password_list_joined = ["".join(password) for password in possible_passwords]
+    return password_list_joined
 
+
+if __name__ == "__main__":
+    PASSWORD_LENGHT = 4
+    password_list = generate_passwords(PASSWORD_LENGHT)
+    print(f"Number of passwords generated: {len(password_list)}")
+    print("First 10 passwords generated:", password_list[:10])
 
 # Para probar el código, descomenta las siguientes líneas
 # if __name__ == "__main__":
