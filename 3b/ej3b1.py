@@ -36,7 +36,14 @@ def measure_time(func: Callable) -> Callable:
 
     def wrapper(*args, **kwargs) -> Tuple[Any, float]:
         # Write here your code
-        pass
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print(f"Execution time of {func.__name__}: {execution_time:.4f} seconds.")
+        return result, execution_time
+
+    return wrapper
 
 
 @measure_time
